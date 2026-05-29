@@ -1,38 +1,42 @@
 import React from 'react';
-import { Code, Brain, BarChart3, Database } from 'lucide-react';
+import { Code2, Brain, Eye, Sparkles, LineChart, Database, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Skills = () => {
     const skillCategories = [
         {
-            title: 'Languages',
-            icon: <Code className="w-8 h-8 text-primary" />,
-            skills: ['Python', 'C']
+            title: 'Programming',
+            icon: <Code2 className="w-5 h-5 text-primary" />,
+            skills: ['Python', 'SQL', 'JavaScript']
         },
         {
-            title: 'ML/DL Frameworks',
-            icon: <Brain className="w-8 h-8 text-primary" />,
-            skills: ['TensorFlow', 'Keras', 'PyTorch', 'Scikit-learn', 'OpenCV']
+            title: 'AI/ML',
+            icon: <Brain className="w-5 h-5 text-primary" />,
+            skills: [
+                'TensorFlow', 'PyTorch', 'Scikit-learn', 'XGBoost', 
+                'Deep Learning', 'Machine Learning', 'NLP', 'Generative AI', 
+                'Prompt Engineering', 'RAG'
+            ]
         },
         {
-            title: 'Data Libraries',
-            icon: <Database className="w-8 h-8 text-primary" />,
-            skills: ['NumPy', 'Pandas', 'Matplotlib', 'Seaborn']
+            title: 'Computer Vision',
+            icon: <Eye className="w-5 h-5 text-primary" />,
+            skills: ['OpenCV', 'YOLOv8', 'Object Detection']
         },
         {
-            title: 'Visualization Tools',
-            icon: <BarChart3 className="w-8 h-8 text-primary" />,
-            skills: ['Power BI', 'Tableau', 'Excel']
+            title: 'Web & Backend',
+            icon: <Database className="w-5 h-5 text-primary" />,
+            skills: ['ReactJS', 'Flask', 'FastAPI', 'Bootstrap']
         },
         {
-            title: 'Databases & Tools',
-            icon: <Database className="w-8 h-8 text-primary" />,
-            skills: ['MySQL', 'Jupyter', 'VS Code', 'Google Colab']
+            title: 'Data Analytics',
+            icon: <LineChart className="w-5 h-5 text-primary" />,
+            skills: ['Power BI', 'Tableau', 'Excel', 'Power Query']
         },
         {
-            title: 'Core Competencies',
-            icon: <Brain className="w-8 h-8 text-primary" />,
-            skills: ['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Data Analytics']
+            title: 'Tools',
+            icon: <Terminal className="w-5 h-5 text-primary" />,
+            skills: ['Git', 'GitHub', 'VS Code', 'KNIME', 'Jupyter Notebook']
         }
     ];
 
@@ -47,26 +51,36 @@ const Skills = () => {
     };
 
     const cardVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 25 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5 }
+            transition: { type: 'spring', stiffness: 80, damping: 13 }
         }
     };
 
     return (
-        <section id="skills" className="py-24 px-6 lg:px-12">
+        <section id="skills" className="py-24 px-6 lg:px-12 bg-[#070b16] relative overflow-hidden">
+            <div className="absolute top-1/2 left-0 w-80 h-80 bg-violet-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+            
             <div className="max-w-6xl mx-auto">
-                <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-5xl font-bold mb-16"
-                >
-                    Technical <span className="text-primary">Skills</span>
-                </motion.h2>
+                <div className="text-center mb-16">
+                    <motion.h2
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-4xl md:text-5xl font-black mb-4 text-white"
+                    >
+                        Technical <span className="bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">Skills</span>
+                    </motion.h2>
+                    <motion.div 
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        className="w-24 h-1 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full"
+                    ></motion.div>
+                </div>
 
                 <motion.div
                     className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -79,19 +93,21 @@ const Skills = () => {
                         <motion.div
                             key={idx}
                             variants={cardVariants}
-                            whileHover={{ scale: 1.03, borderColor: 'rgba(139, 92, 246, 0.5)' }}
-                            className="bg-dark-800 border border-dark-700 rounded-lg p-6 hover:border-primary/50 transition-all duration-300"
+                            whileHover={{ y: -6 }}
+                            className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 backdrop-blur-sm flex flex-col"
                         >
                             <div className="flex items-center gap-3 mb-4">
-                                {category.icon}
-                                <h3 className="text-xl font-semibold">{category.title}</h3>
+                                <div className="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/50 flex items-center justify-center">
+                                    {category.icon}
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-150">{category.title}</h3>
                             </div>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 mt-auto">
                                 {category.skills.map((skill, i) => (
                                     <motion.span
                                         key={i}
-                                        whileHover={{ scale: 1.1, backgroundColor: 'rgba(139, 92, 246, 0.2)' }}
-                                        className="px-3 py-1 bg-dark-900 border border-dark-700 rounded-full text-sm text-gray-300 cursor-pointer"
+                                        whileHover={{ scale: 1.05, backgroundColor: 'rgba(16, 185, 129, 0.15)', borderColor: 'rgba(16, 185, 129, 0.4)' }}
+                                        className="px-2.5 py-1 bg-slate-800/35 border border-slate-750 rounded-lg text-xs md:text-sm text-gray-300 cursor-default transition-all duration-200"
                                     >
                                         {skill}
                                     </motion.span>

@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-400 text-center md:text-left">
-                        © 2025 <span className="text-primary font-semibold">Ragasudha S.S</span>. All rights reserved.
+                        © 2026 Ragasudha S.S | AI Engineer Portfolio
                     </p>
 
                     <div className="flex gap-6">
