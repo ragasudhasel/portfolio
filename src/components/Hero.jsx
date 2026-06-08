@@ -174,8 +174,9 @@ const Hero = () => {
                     </motion.a>
 
                     <motion.a
-                        href="/resume.pdf"
-                        download
+                        href={`${import.meta.env.BASE_URL}resume.pdf`}
+                        download="Ragasudha_Resume.pdf"
+                        target="_blank"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="group relative px-8 py-3.5 bg-white/5 border border-white/50 shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(0,255,204,0.8)] hover:border-[#00ffcc] text-white hover:text-[#00ffcc] rounded-full transition-all duration-300 font-medium text-sm flex items-center gap-2 backdrop-blur-sm"
