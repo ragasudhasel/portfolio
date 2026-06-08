@@ -9,12 +9,40 @@ const Contact = () => {
         subject: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! I will get back to you soon.');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+        
+        const form = new FormData();
+        // Go to https://web3forms.com/ to get your free access key for ss.ragasudharaj@gmail.com
+        form.append("access_key", "6f1c8548-468f-4afb-aeba-054928ddec6f"); 
+        form.append("name", formData.name);
+        form.append("email", formData.email);
+        form.append("subject", formData.subject);
+        form.append("message", formData.message);
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: form
+            });
+            const data = await response.json();
+            if (data.success) {
+                setSubmitStatus('success');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setTimeout(() => setSubmitStatus(null), 5000); // Hide after 5 seconds
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -44,7 +72,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 px-6 lg:px-12 bg-[#060a12] relative overflow-hidden">
+        <section id="contact" className="py-24 px-6 lg:px-12 bg-transparent relative overflow-hidden z-10">
             <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-violet-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto">
@@ -85,11 +113,11 @@ const Contact = () => {
 
                             <div className="space-y-5">
                                 <motion.a 
-                                    href="mailto:ss.ragasudharaj@gmail.com" 
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ss.ragasudharaj@gmail.com" target="_blank" rel="noreferrer" 
                                     variants={itemVariants} 
-                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-slate-900/40 p-4 rounded-xl border border-slate-800 hover:border-primary/30"
+                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-[#0a0f1e]/40 p-4 rounded-xl border border-white/10 hover:border-[#00ffcc]/50 backdrop-blur-md hover:shadow-[0_0_20px_rgba(0,255,204,0.1)]"
                                 >
-                                    <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                                    <div className="w-11 h-11 bg-[#00ffcc]/10 rounded-lg flex items-center justify-center text-[#00ffcc]">
                                         <Mail className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -101,9 +129,9 @@ const Contact = () => {
                                 <motion.a 
                                     href="tel:9344063233" 
                                     variants={itemVariants} 
-                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-slate-900/40 p-4 rounded-xl border border-slate-800 hover:border-primary/30"
+                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-[#0a0f1e]/40 p-4 rounded-xl border border-white/10 hover:border-[#00ffcc]/50 backdrop-blur-md hover:shadow-[0_0_20px_rgba(0,255,204,0.1)]"
                                 >
-                                    <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                                    <div className="w-11 h-11 bg-[#00ffcc]/10 rounded-lg flex items-center justify-center text-[#00ffcc]">
                                         <Phone className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -117,9 +145,9 @@ const Contact = () => {
                                     target="_blank" 
                                     rel="noreferrer" 
                                     variants={itemVariants} 
-                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-slate-900/40 p-4 rounded-xl border border-slate-800 hover:border-primary/30"
+                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-[#0a0f1e]/40 p-4 rounded-xl border border-white/10 hover:border-[#00ffcc]/50 backdrop-blur-md hover:shadow-[0_0_20px_rgba(0,255,204,0.1)]"
                                 >
-                                    <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                                    <div className="w-11 h-11 bg-[#00ffcc]/10 rounded-lg flex items-center justify-center text-[#00ffcc]">
                                         <Linkedin className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -133,9 +161,9 @@ const Contact = () => {
                                     target="_blank" 
                                     rel="noreferrer" 
                                     variants={itemVariants} 
-                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-slate-900/40 p-4 rounded-xl border border-slate-800 hover:border-primary/30"
+                                    className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 bg-[#0a0f1e]/40 p-4 rounded-xl border border-white/10 hover:border-[#00ffcc]/50 backdrop-blur-md hover:shadow-[0_0_20px_rgba(0,255,204,0.1)]"
                                 >
-                                    <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                                    <div className="w-11 h-11 bg-[#00ffcc]/10 rounded-lg flex items-center justify-center text-[#00ffcc]">
                                         <Github className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -153,7 +181,7 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+                        className="bg-[#0a0f1e]/40 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.3)] hover:border-white/20 transition-all duration-300"
                     >
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
@@ -164,7 +192,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="Your Name"
                                     required
-                                    className="w-full px-4 py-3 bg-slate-950 border border-slate-850 rounded-xl focus:outline-none focus:border-primary text-gray-200 placeholder-gray-500 transition-colors"
+                                    className="w-full px-4 py-3 bg-[#0a0f1e]/60 border border-white/10 rounded-xl focus:outline-none focus:border-[#00ffcc] focus:shadow-[0_0_15px_rgba(0,255,204,0.1)] text-gray-200 placeholder-gray-500 transition-all"
                                 />
                             </div>
 
@@ -176,7 +204,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="Your Email"
                                     required
-                                    className="w-full px-4 py-3 bg-slate-950 border border-slate-850 rounded-xl focus:outline-none focus:border-primary text-gray-200 placeholder-gray-500 transition-colors"
+                                    className="w-full px-4 py-3 bg-[#0a0f1e]/60 border border-white/10 rounded-xl focus:outline-none focus:border-[#00ffcc] focus:shadow-[0_0_15px_rgba(0,255,204,0.1)] text-gray-200 placeholder-gray-500 transition-all"
                                 />
                             </div>
 
@@ -188,7 +216,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="Subject"
                                     required
-                                    className="w-full px-4 py-3 bg-slate-950 border border-slate-850 rounded-xl focus:outline-none focus:border-primary text-gray-200 placeholder-gray-500 transition-colors"
+                                    className="w-full px-4 py-3 bg-[#0a0f1e]/60 border border-white/10 rounded-xl focus:outline-none focus:border-[#00ffcc] focus:shadow-[0_0_15px_rgba(0,255,204,0.1)] text-gray-200 placeholder-gray-500 transition-all"
                                 />
                             </div>
 
@@ -200,19 +228,31 @@ const Contact = () => {
                                     placeholder="Your Message"
                                     required
                                     rows="5"
-                                    className="w-full px-4 py-3 bg-slate-950 border border-slate-850 rounded-xl focus:outline-none focus:border-primary text-gray-200 placeholder-gray-500 transition-colors resize-none"
+                                    className="w-full px-4 py-3 bg-[#0a0f1e]/60 border border-white/10 rounded-xl focus:outline-none focus:border-[#00ffcc] focus:shadow-[0_0_15px_rgba(0,255,204,0.1)] text-gray-200 placeholder-gray-500 transition-all resize-none"
                                 ></textarea>
                             </div>
 
                             <motion.button
                                 type="submit"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full px-8 py-4 bg-primary text-slate-950 rounded-xl hover:bg-primary/95 transition-all duration-300 font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/10"
+                                disabled={isSubmitting}
+                                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                                className={`w-full px-8 py-4 rounded-xl transition-all duration-300 font-bold flex items-center justify-center gap-2 shadow-lg ${isSubmitting ? 'bg-primary/50 text-slate-950/50 cursor-not-allowed' : 'bg-primary text-slate-950 hover:bg-primary/95 shadow-primary/10'}`}
                             >
-                                <Send className="w-4 h-4" />
-                                Send Message
+                                <Send className={`w-4 h-4 ${isSubmitting ? 'animate-pulse' : ''}`} />
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </motion.button>
+                            
+                            {submitStatus === 'success' && (
+                                <div className="p-3 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-sm text-center">
+                                    Message sent successfully! I will get back to you soon.
+                                </div>
+                            )}
+                            {submitStatus === 'error' && (
+                                <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-red-400 text-sm text-center">
+                                    Oops! Something went wrong. Please try again later.
+                                </div>
+                            )}
                         </form>
                     </motion.div>
                 </div>

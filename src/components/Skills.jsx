@@ -5,38 +5,45 @@ import { motion } from 'framer-motion';
 const Skills = () => {
     const skillCategories = [
         {
-            title: 'Programming',
+            title: 'Programming Languages',
             icon: <Code2 className="w-5 h-5 text-primary" />,
-            skills: ['Python', 'SQL', 'JavaScript']
+            skills: ['Python', 'SQL']
         },
         {
-            title: 'AI/ML',
+            title: 'Machine & Deep Learning',
             icon: <Brain className="w-5 h-5 text-primary" />,
             skills: [
-                'TensorFlow', 'PyTorch', 'Scikit-learn', 'XGBoost', 
-                'Deep Learning', 'Machine Learning', 'NLP', 'Generative AI', 
-                'Prompt Engineering', 'RAG'
+                'TensorFlow', 'Keras', 'PyTorch', 'Scikit-learn', 'XGBoost', 
+                'Random Forest', 'Transfer Learning', 'Model Optimization', 'Hyperparameter Tuning'
             ]
         },
         {
             title: 'Computer Vision',
             icon: <Eye className="w-5 h-5 text-primary" />,
-            skills: ['OpenCV', 'YOLOv8', 'Object Detection']
+            skills: ['OpenCV', 'YOLOv8', 'YOLO Object Detection', 'Image Classification', 'Real-time Detection']
         },
         {
-            title: 'Web & Backend',
-            icon: <Database className="w-5 h-5 text-primary" />,
-            skills: ['ReactJS', 'Flask', 'FastAPI', 'Bootstrap']
+            title: 'NLP & Generative AI',
+            icon: <Sparkles className="w-5 h-5 text-primary" />,
+            skills: [
+                'Transformers', 'Hugging Face', 'TF-IDF', 'Sentiment Analysis', 'RAG', 
+                'CLIP', 'Vision Language Models', 'Prompt Engineering', 'Multi-modal AI'
+            ]
         },
         {
-            title: 'Data Analytics',
+            title: 'Data Analysis & Visualization',
             icon: <LineChart className="w-5 h-5 text-primary" />,
-            skills: ['Power BI', 'Tableau', 'Excel', 'Power Query']
+            skills: ['Power BI', 'DAX', 'Tableau', 'Excel', 'Power Query', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn']
         },
         {
-            title: 'Tools',
+            title: 'Databases & Backend',
+            icon: <Database className="w-5 h-5 text-primary" />,
+            skills: ['MySQL', 'PostgreSQL', 'SQLite', 'Flask', 'FastAPI', 'Bootstrap']
+        },
+        {
+            title: 'Tools & Platforms',
             icon: <Terminal className="w-5 h-5 text-primary" />,
-            skills: ['Git', 'GitHub', 'VS Code', 'KNIME', 'Jupyter Notebook']
+            skills: ['Git', 'GitHub', 'KNIME', 'Jupyter Notebook', 'Google Colab', 'VS Code']
         }
     ];
 

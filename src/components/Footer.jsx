@@ -28,7 +28,9 @@ const Footer = () => {
                             <Linkedin className="w-5 h-5" />
                         </a>
                         <a
-                            href="mailto:ss.ragasudharaj@gmail.com"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=ss.ragasudharaj@gmail.com"
+                            target="_blank" 
+                            rel="noreferrer"
                             className="hover:text-primary transition-colors"
                         >
                             <Mail className="w-5 h-5" />

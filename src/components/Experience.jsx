@@ -55,7 +55,7 @@ const Experience = () => {
     };
 
     return (
-        <section id="experience" className="py-24 px-6 lg:px-12 bg-[#070b16] relative overflow-hidden">
+        <section id="experience" className="py-24 px-6 lg:px-12 bg-transparent relative overflow-hidden z-10">
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto">
@@ -96,8 +96,9 @@ const Experience = () => {
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                                     whileHover={{ scale: 1.01 }}
-                                    className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 hover:border-primary/35 transition-all duration-350"
+                                    className="group relative bg-[#0a0f1e]/40 border border-white/10 rounded-2xl p-6 md:p-8 hover:border-[#00ffcc]/50 hover:shadow-[0_0_30px_rgba(0,255,204,0.15)] transition-all duration-300 backdrop-blur-md overflow-hidden z-10"
                                 >
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#00ffcc]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10" />
                                     <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
                                         <div>
                                             <h4 className="text-xl font-bold text-white">{exp.role}</h4>
@@ -153,8 +154,8 @@ const Experience = () => {
                                 <motion.div
                                     key={idx}
                                     variants={itemVariants}
-                                    whileHover={{ x: 6, borderColor: 'rgba(139, 92, 246, 0.4)' }}
-                                    className="bg-slate-900/30 border border-slate-800/80 rounded-xl p-4.5 flex items-center justify-between gap-4 transition-all cursor-default"
+                                    whileHover={{ x: 6, borderColor: 'rgba(0, 255, 204, 0.4)' }}
+                                    className="bg-[#0a0f1e]/40 border border-white/10 backdrop-blur-md rounded-xl p-4.5 flex items-center justify-between gap-4 transition-all cursor-default"
                                 >
                                     <div className="flex items-center gap-3">
                                         <div className="w-2 h-2 bg-violet-500 rounded-full flex-shrink-0 animate-pulse"></div>
